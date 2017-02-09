@@ -11,7 +11,7 @@ function _message() {
 }
 
 function fail() {
-    _message "failed: ${1}" $ERROR_COLOR
+    _message "failed: ${1}" "$ERROR_COLOR"
     echo "${1}" > "$WERCKER_REPORT_MESSAGE_FILE"
     exit 1
 }
