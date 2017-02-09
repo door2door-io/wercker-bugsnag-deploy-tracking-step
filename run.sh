@@ -2,7 +2,7 @@
 
 set -e
 
-function fail {
+fail () {
     echo -e "\033[31m\033[1m${1}\033[0m"
     echo "${1}" > "$WERCKER_REPORT_MESSAGE_FILE"
     exit 1
