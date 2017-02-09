@@ -2,16 +2,8 @@
 
 set -e
 
-ERROR_COLOR=$(tput setaf 1 ; tput bold)
-
-function _message() {
-    msg=$1
-    color=$2
-    echo -e "${color}${msg}${RESET_COLOR}"
-}
-
 function fail() {
-    _message "failed: ${1}" "$ERROR_COLOR"
+    echo -e "\033[31m\033[1m${1}\033[0m"
     echo "${1}" > "$WERCKER_REPORT_MESSAGE_FILE"
     exit 1
 }
