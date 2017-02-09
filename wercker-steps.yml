@@ -1,0 +1,16 @@
+name: bugsnag-deploy-tracking-notify
+version: 0.0.1
+description: Posts deployment to Bugsnag's deploy tracking API.
+keywords:
+  - notification
+  - webhook
+  - deploy
+  - track
+  - bugsnag
+properties:
+  api_key:
+    type: string
+    required: true
+  stages:
+    type: string
+    required: true
