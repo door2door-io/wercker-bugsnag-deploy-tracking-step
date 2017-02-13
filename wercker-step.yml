@@ -11,6 +11,6 @@ properties:
   api_key:
     type: string
     required: true
-  stages:
+  release_stage:
     type: string
     required: true

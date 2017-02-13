@@ -13,26 +13,20 @@ if [ -z "$WERCKER_BUGSNAG_DEPLOY_TRACKING_NOTIFY_API_KEY" ]; then
   fail "Please provide a Bugsnag API key."
 fi
 
+# Check if release stage is present
+if [ -z "$WERCKER_BUGSNAG_DEPLOY_TRACKING_NOTIFY_RELEASE_STAGE" ]; then
+  fail "Please provide release stage."
+fi
+
 # Skip when deploy failed (use as an deploy after step)
 if [ "$WERCKER_RESULT" = "failed" ]; then
   return 0
 fi
 
-# Skip when stage not applicable for deploy tracking
-stage_applicable=0;
-IFS=,; for x in $WERCKER_BUGSNAG_DEPLOY_TRACKING_NOTIFY_STAGES; do
-  # Don't forget to trim space, just in case the list goes like " foo, bar" etc.
-  if [ "${x//[[:space:]]/}" == "$STAGE" ]; then
-    stage_applicable=1
-  fi
-done
-if [[ $stage_applicable == 0 ]]; then
-  return 0
-fi
 export BUGSNAG_DEPLOY_TRACKING_API_URL="https://notify.bugsnag.com/deploy"
 
 payload="apiKey=$WERCKER_BUGSNAG_DEPLOY_TRACKING_NOTIFY_API_KEY"
-payload=$payload"&releaseStage=$STAGE"
+payload=$payload"&releaseStage=$WERCKER_BUGSNAG_DEPLOY_TRACKING_NOTIFY_RELEASE_STAGE"
 payload=$payload"&repository=$WERCKER_GIT_REPOSITORY"
 payload=$payload"&branch=$WERCKER_GIT_BRANCH"
 payload=$payload"&revision=$WERCKER_GIT_COMMIT"
