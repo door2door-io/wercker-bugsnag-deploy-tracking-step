@@ -1,5 +1,5 @@
 name: bugsnag-deploy-tracking-notify
-version: 0.0.4
+version: 1.0.0
 description: Posts deployment to Bugsnag's deploy tracking API.
 keywords:
   - notification
