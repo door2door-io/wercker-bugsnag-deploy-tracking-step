@@ -20,7 +20,7 @@ variable in order to define the release stage per pipeline, e.g.
 ```
 deploy:
     after-steps:
-        - bugsnag-deploy-tracking-notify:
+        - ally/bugsnag-deploy-tracking-notify:
             api_key: $BUGSNAG_API_KEY
             release_stage: "production"
 ```
