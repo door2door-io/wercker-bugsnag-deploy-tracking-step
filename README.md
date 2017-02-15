@@ -24,3 +24,7 @@ deploy:
             api_key: $BUGSNAG_API_KEY
             release_stage: "production"
 ```
+
+## Dependencies
+
+Requires `curl`.
